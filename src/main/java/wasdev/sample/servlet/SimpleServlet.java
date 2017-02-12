@@ -20,8 +20,11 @@ public class SimpleServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	harassFilter indicator = new harassFilter(0.3);
+        String sentiment = indicator.checkHarassment("You're really really really mean");
+        
         response.setContentType("text/html");
-        response.getWriter().print("Hello World!");
+        response.getWriter().print(String.format("Your comment was %s", sentiment));
     }
 
 }
